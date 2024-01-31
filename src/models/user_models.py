@@ -24,8 +24,8 @@ class CreateUser(BaseModel):
     @validator("email")
     def good_emmail(cls, email:str):
             if "@" not in email or ".com" not in email:
-                #raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail= "El email no contiene '@' o '.com'")
-                raise ValueError("El email no contiene '@' o '.com'") 
+                raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail= "El email no contiene '@' o '.com'")
+                #raise ValueError("El email no contiene '@' o '.com'") 
             else:
                 return email
                 
@@ -53,9 +53,6 @@ class CreateUser(BaseModel):
                 #raise  ValueError("Username repetido")
          return username
               
-            
-
-            
 
 class UpdateUser(BaseModel):
     password: str = Field(min_length=8, max_length=15)
@@ -66,8 +63,8 @@ class UpdateUser(BaseModel):
     @validator("email")
     def good_emmail(cls, email:str):
             if "@" not in email or ".com" not in email:
-                #raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail= "El email no contiene '@' o '.com'")
-                raise ValueError("El email no contiene '@' o '.com'") 
+                raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail= "El email no contiene '@' o '.com'")
+                #raise ValueError("El email no contiene '@' o '.com'") 
             else:
                 return email
                 
